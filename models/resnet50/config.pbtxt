@@ -1,0 +1,18 @@
+name: "resnet50"
+platform: "tensorflow_savedmodel"
+max_batch_size : 0
+input [
+  {
+    name: "input_1"
+    data_type: TYPE_FP32
+    dims: [-1, 224, 224, 3 ]
+    reshape { shape: [ -1, 224, 224, 3] }
+  }
+]
+output [
+  {
+    name: "avg_pool"
+    data_type: TYPE_FP32
+    dims: [-1, 2048]
+  }
+]

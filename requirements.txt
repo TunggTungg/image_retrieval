@@ -1,0 +1,6 @@
+opencv-python-headless
+tritonclient[all]
+tensorflow[and-cuda]
+tensorrt
+fastapi[all]
+faiss-cpu
