@@ -1,18 +1,45 @@
 name: "resnet50"
 platform: "tensorflow_savedmodel"
-max_batch_size : 0
+max_batch_size : 4
 input [
   {
     name: "input_1"
     data_type: TYPE_FP32
-    dims: [-1, 224, 224, 3 ]
-    reshape { shape: [ -1, 224, 224, 3] }
+    dims: [ 224, 224, 3 ]
   }
 ]
 output [
   {
     name: "avg_pool"
     data_type: TYPE_FP32
-    dims: [-1, 2048]
+    dims: [ 2048 ]
   }
 ]
+
+model_warmup {
+   name: "feature_extractor"
+   batch_size: 4
+   inputs: {
+       key: "input_1"
+       value: {
+           data_type: TYPE_FP32
+           dims: 224
+           dims: 224
+           dims: 3
+           zero_data: true
+       }
+   }
+}
+
+optimization {
+  graph : {
+    level : 1
+  }
+ execution_accelerators {
+    gpu_execution_accelerator : [ {
+      name : "tensorrt",
+      parameters { key: "precision_mode" value: "FP16" },
+      parameters { key: "max_workspace_size_bytes" value: "2147483648" }
+    }]
+  }
+}
