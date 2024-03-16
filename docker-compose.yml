@@ -2,20 +2,17 @@ version: '3'
 services:
   web:
     container_name: image_retrieval_api
-    build: .
+    build:
+      context: .
+      target: web-final 
     restart: always
     volumes:
-      - .:/code
+      - .:/app
     command: ["uvicorn", "app.app:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]
     ports:
       - "5000:5000"
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count:  1
-              capabilities: [gpu]
+    depends_on:
+      - tritonserver
     networks:
       mynet:
         ipv4_address: 10.5.0.4
