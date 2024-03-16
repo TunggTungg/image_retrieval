@@ -1,22 +1,25 @@
 import tritonclient.grpc as grpc_client
 from tritonclient.grpc import InferenceServerClient
-from tensorflow.keras.applications.resnet50 import preprocess_input
 import numpy as np
 import cv2,  base64
 
 def convert_img(encoded_img):
-    if isinstance(encoded_img, str):
-        b64_decoded_image = base64.b64decode(encoded_img)
-    else:
-        b64_decoded_image = encoded_img
+	if isinstance(encoded_img, str):
+		b64_decoded_image = base64.b64decode(encoded_img)
+	else:
+		b64_decoded_image = encoded_img
 
-    img_arr = np.fromstring(b64_decoded_image, np.uint8)
-    img = cv2.imdecode(img_arr, cv2.IMREAD_COLOR)
-    img = cv2.resize(img, (224, 224))
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) 
-    img = np.expand_dims(img,axis=0).astype(np.float32)
-    img = preprocess_input(img)
-    return img
+	img_arr = np.fromstring(b64_decoded_image, np.uint8)
+	img = cv2.imdecode(img_arr, cv2.IMREAD_COLOR)
+	img = cv2.resize(img, (224, 224))
+	img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) 
+	img = np.expand_dims(img,axis=0).astype(np.float32)
+
+	mean = [103.939, 116.779, 123.68]
+	img[..., 0] -= mean[0]
+	img[..., 1] -= mean[1]
+	img[..., 2] -= mean[2]
+	return img
 
 def grpc_infer(img):
 	triton_client = InferenceServerClient(url='10.5.0.5:8001')
