@@ -2,71 +2,91 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 @import url(https://fonts.googleapis.com/css?family=Comfortaa);
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Comfortaa', cursive;
-  background: #353535;
-  color: #FFF;
-}
-.jumbotron h1 {
-  color: #353535;
+  background:#404040;
+  margin: 0;
+  color:white;
 }
 
-.image-container {
-  display: flex;
-  justify-content: space-between;
+h1, p {
+  margin: 0;
 }
 
-.image-container img {
-  flex: 50%;
-  padding: 20px;
-}
-
-
-#imageGallery {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-}
-
-.galleryImage {
-    max-width: 50%;
-    height: auto;
-    margin: 5px;
-}
-
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+#top {
+  background-color:#ffe6e6;
+  color:black;
   text-align: center;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  font-size: medium;
+}
+#top h1{
+  margin-bottom:5px;
 }
 
 footer {
-  margin-bottom: 0 !important;
-  margin-top: 80px;
-}
-footer p {
-  margin: 0;
-  padding: 0;
-}
-span.icon {
-  margin: 0 5px;
-  color: #D64541;
-}
-h2 {
-  color: #BDC3C7;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.mrng-5-top {
+  margin-bottom: 0px !important;
   margin-top: 5px;
-  font-family: "Comfortaa";
+
+  font-style: italic;
+}
+
+footer hr{
+  margin: 0;
+}
+footer p{
+  margin: 5px 0px 5px 0px;
+  text-align: center;
+}
+footer a{
+  color:#4da6ff;
+}
+
+#main p{
+  color: white;
+  text-align: center;
+  font-style: oblique;
+}
+
+figure {
+  margin: 0;
+}
+
+figure img {
+  width: 70%;
+  display:block;
+  margin: 5px auto;
+  border: 2px solid #e6ffe6;
+  box-shadow: 0 0 50px red;
+  border-radius: 25px 0 25px 0;
+}
+
+figure figcaption{
+  text-align:center;
+  color: white;
+  font-style: italic;
+}
+
+.result_container {
+  column-count: 5;
+  column-gap: 10px;
+}
+
+.result_figure {
+  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  margin-bottom: 10px;
+  break-inside: avoid;
+}
+
+.result_figure img {
+  width: 100%;
+  display: block;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  border-radius: 15px;
 }
 
 .btn{
@@ -78,11 +98,13 @@ h2 {
   text-decoration: none;
   margin: 0;
   border: 2px solid #ff7675;
-  padding: 14px 60px;
+  text-align:center;
+  padding: 10px;
   text-transform: uppercase;
   overflow: hidden;
   transition: 1s all ease;
 }
+
 .btn::before{
   background: #ff7675;
   content: "";
@@ -102,5 +124,6 @@ h2 {
 .btnanimate:hover::before{
   height: 380%;
 }
+
 
 
