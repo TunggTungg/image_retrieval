@@ -1,15 +1,14 @@
 
 # **Image Retrieval**
 
-## Description
-This project aims to build an image retrieval system that utilizes deep learning [ResNet](https://keras.io/api/applications/resnet/) for feature extraction, [Local Optimized Product Quantization](https://github.com/facebookresearch/faiss) techniques for storage and retrieval, and efficient deployment using Nvidia technologies like [TensorRT](https://developer.nvidia.com/tensorrt) and [Triton Server](https://developer.nvidia.com/triton-inference-server), all accessible through a [FastAPI](https://fastapi.tiangolo.com/)-powered web API.
-
 ## Demo video
 <p align="center">
   <img src="demo/video.gif"><br/>
   <i>Project deployment.</i>
 </p>
 
+## Description
+This project aims to build an image retrieval system that utilizes deep learning [ResNet](https://keras.io/api/applications/resnet/) for feature extraction, [Local Optimized Product Quantization](https://github.com/facebookresearch/faiss) techniques for storage and retrieval, and efficient deployment using Nvidia technologies like [TensorRT](https://developer.nvidia.com/tensorrt) and [Triton Server](https://developer.nvidia.com/triton-inference-server), all accessible through a [FastAPI](https://fastapi.tiangolo.com/)-powered web API.
 
 ## Run Locally
 
